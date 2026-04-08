@@ -1,0 +1,98 @@
+.about-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 85vh;
+  padding: 40px;
+}
+
+.about-card {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 60px;
+  max-width: 1100px;
+  background: white;
+  padding: 50px;
+  border-radius: 20px;
+  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.08);
+}
+
+.about-card:hover {
+  box-shadow: 0 12px 32px #ff6600;
+  transform: translateY(-5px);
+  transition: all 0.3s ease;
+}
+
+.about-left {
+  flex: 1;
+}
+
+.about-left h1 {
+  font-size: 2.8rem;
+}
+
+.about-left span {
+  color: #ff7a00;
+}
+
+.about-role {
+  color: #666;
+  margin: 10px 0 20px;
+}
+
+.about-description {
+  line-height: 1.6;
+  margin-bottom: 20px;
+}
+
+.about-info p {
+  margin: 5px 0;
+}
+
+.about-buttons {
+  margin-top: 20px;
+  display: flex;
+  gap: 15px;
+}
+
+.portfolio-btn,
+.resume-btn {
+  text-decoration: none;
+  padding: 10px 18px;
+  border-radius: 8px;
+  font-weight: 500;
+  color: white;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.portfolio-btn {
+  background: #ff7a00;
+}
+
+.resume-btn {
+  background: #4caf50;
+}
+
+.social-links {
+  margin-top: 25px;
+  display: flex;
+  gap: 20px;
+}
+
+.social-links a {
+  font-size: 28px;
+  color: #333;
+  transition: 0.3s;
+}
+
+.social-links a:hover {
+  color: #ff7a00;
+  transform: scale(1.1);
+}
+
+.about-right img {
+  width: 320px;
+}
