@@ -141,50 +141,6 @@ Email:    john@example.com (or jane@example.com or test@example.com)
 Password: password123
 ```
 
-## 🔧 Available Scripts
-
-```bash
-# Start development server
-npm start
-
-# Build for production
-npm run build
-
-# Run production build locally
-npm run serve
-
-# Clean build cache
-npm run clean
-```
-
----
-
-## 📦 Build & Deployment
-
-### Build for Production
-
-```bash
-npm run build
-```
-
-This creates an optimized `dist/` folder ready for deployment.
-
-### Deploy to Vercel (Recommended)
-
-1. **Push to GitHub**
-
-```bash
-git add .
-git commit -m "Deploy to production"
-git push origin main
-```
-
-2. **Connect to Vercel**
-   - Visit [vercel.com](https://vercel.com)
-   - Click "New Project"
-   - Import your GitHub repository
-   - Click "Deploy"
-
 **Live URL:** `https://umang-react-lilac.vercel.app/`
 
 ## 🔐 Authentication
@@ -195,49 +151,6 @@ The app uses **frontend-only authentication** with:
 - Session persistence via localStorage
 - No backend API required
 - Easily replaceable with real backend
-
----
-
-## 🎯 Key Features Explained
-
-### Data Persistence
-
-- **User sessions** → Saved to localStorage
-- **Cart items** → Persist across page reloads
-- **Auto-restore** → On app launch
-
-### Performance Optimizations
-
-- Code splitting with React.lazy()
-- Route-based lazy loading
-- Component memoization with React.memo()
-- Shimmer UI for loading states
-
-### Responsive Design
-
-- Mobile-first approach
-- Flexible layouts with CSS Grid & Flexbox
-- Touch-friendly buttons and spacing
-
----
-
-## 🐛 Debugging Tips
-
-### Cart not persisting?
-
-- Check browser's localStorage (DevTools → Application → LocalStorage)
-- Clear localStorage: `localStorage.clear()`
-
-### User session lost?
-
-- Check if localStorage is enabled in browser
-- Try private/incognito window
-
-### API not working?
-
-- The app uses Swiggy's public API
-- Check if you have internet connection
-- Verify API endpoints in `useRestaurantData.js`
 
 ---
 
@@ -303,7 +216,6 @@ If you have any questions or issues:
 - [ ] Run `npm start`
 - [ ] Test authentication with demo credentials
 - [ ] Add items to cart
-- [ ] Try deploying to Vercel
 - [ ] Share with friends!
 
 ---
