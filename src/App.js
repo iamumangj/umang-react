@@ -5,6 +5,7 @@ import {
   RouterProvider,
   Outlet,
   useLocation,
+  Navigate,
 } from "react-router-dom";
 import Header from "./components/Header/Header";
 import Footer from "./components/Footer/Footer";
@@ -16,6 +17,7 @@ import Cart from "./components/Cart/Cart";
 import RestroCard from "./components/ShimmerUI/RestroCard";
 import { CartProvider } from "./utils/CartContext";
 import { AuthProvider } from "./utils/AuthContext";
+import { useAuth } from "./utils/AuthContext";
 import "./index.css";
 
 /**
@@ -32,6 +34,22 @@ import "./index.css";
 const About = lazy(() => import("./components/About/About"));
 const Body = lazy(() => import("./components/Body/Body"));
 
+// Protected Route Component
+const ProtectedRoute = ({ children }) => {
+  const { isLoggedIn, loading } = useAuth();
+
+  if (loading) {
+    return <RestroCard />;
+  }
+
+  if (!isLoggedIn) {
+    return <Navigate to="/login" replace />;
+  }
+
+  return children;
+};
+
+// Layout for authenticated users
 const AppLayout = () => {
   const location = useLocation();
 
@@ -41,51 +59,30 @@ const AppLayout = () => {
   }, [location.pathname]);
 
   return (
-    <AuthProvider>
-      <CartProvider>
-        <div className="app">
-          <Header />
-          <Outlet />
-          <Footer />
-        </div>
-      </CartProvider>
-    </AuthProvider>
+    <CartProvider>
+      <div className="app">
+        <Header />
+        <Outlet />
+        <Footer />
+      </div>
+    </CartProvider>
+  );
+};
+
+// Layout for login page (without protected routes)
+const LoginLayout = () => {
+  return (
+    <div className="app">
+      <Outlet />
+    </div>
   );
 };
 
 const appRouter = createBrowserRouter([
   {
-    path: "/",
-    element: <AppLayout />,
+    path: "/login",
+    element: <LoginLayout />,
     children: [
-      {
-        path: "/",
-        element: (
-          <Suspense fallback={<RestroCard />}>
-            <Body />
-          </Suspense>
-        ),
-      },
-      {
-        path: "/about",
-        element: (
-          <Suspense fallback={<h1>Loading...</h1>}>
-            <About />
-          </Suspense>
-        ),
-      },
-      {
-        path: "/contact",
-        element: <Contact />,
-      },
-      {
-        path: "/restaurants/:resId",
-        element: <RestaurantMenu />,
-      },
-      {
-        path: "/cart",
-        element: <Cart />,
-      },
       {
         path: "/login",
         element: <Login />,
@@ -93,8 +90,68 @@ const appRouter = createBrowserRouter([
     ],
     errorElement: <Error />,
   },
+  {
+    path: "/",
+    element: <AppLayout />,
+    children: [
+      {
+        path: "/",
+        element: (
+          <ProtectedRoute>
+            <Suspense fallback={<RestroCard />}>
+              <Body />
+            </Suspense>
+          </ProtectedRoute>
+        ),
+      },
+      {
+        path: "/about",
+        element: (
+          <ProtectedRoute>
+            <Suspense fallback={<h1>Loading...</h1>}>
+              <About />
+            </Suspense>
+          </ProtectedRoute>
+        ),
+      },
+      {
+        path: "/contact",
+        element: (
+          <ProtectedRoute>
+            <Contact />
+          </ProtectedRoute>
+        ),
+      },
+      {
+        path: "/restaurants/:resId",
+        element: (
+          <ProtectedRoute>
+            <RestaurantMenu />
+          </ProtectedRoute>
+        ),
+      },
+      {
+        path: "/cart",
+        element: (
+          <ProtectedRoute>
+            <Cart />
+          </ProtectedRoute>
+        ),
+      },
+    ],
+    errorElement: <Error />,
+  },
 ]);
+
+// Root component with AuthProvider at the top level
+const RootApp = () => {
+  return (
+    <AuthProvider>
+      <RouterProvider router={appRouter} />
+    </AuthProvider>
+  );
+};
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 
-root.render(<RouterProvider router={appRouter} />);
+root.render(<RootApp />);
