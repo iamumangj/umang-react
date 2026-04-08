@@ -1,0 +1,126 @@
+/* 🔥 Modernized UI for Dishcovery Food App */
+
+/* ===== CSS Variables ===== */
+:root {
+  --primary: #ff6600;
+  --bg-light: #fefefe;
+  --text-dark: #333;
+  --text-muted: #666;
+  --shadow-light: rgba(0, 0, 0, 0.12);
+  --shadow-heavy: rgba(0, 0, 0, 0.15);
+  --shadow-primary: rgba(255, 102, 0, 0.2);
+  --not-found-bg: #fff3ed;
+  --not-found-text: #b45309;
+  --header-bg-color: rgb(255, 255, 255);
+  --footer-bg-color: rgb(255, 255, 255);
+  --body-bg-color: #e3e3e3;
+  --text-color: #000;
+  --green: #00ad1d;
+  --orange: #ffa500;
+  --red: #ff0000;
+  --box-shadow: 0 0 10px rgba(216, 215, 215, 0.1);
+  --border-radius: 10px;
+  --light-text-color: #545454;
+  --white: #fff;
+}
+
+/* ===== Reset & Base Styles ===== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  overflow-x: hidden;
+}
+
+a,
+Link {
+  text-decoration: none;
+}
+
+body {
+  font-family: "Inter", "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  background-color: var(--body-bg-color);
+  color: var(--text-dark);
+  line-height: 1.6;
+  letter-spacing: 0.3px;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  flex: 1;
+  min-height: 80vh;
+}
+
+/* ===== Scrollbar Styles ===== */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: #ffa447;
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #e88e2a;
+}
+
+.app {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.filter-btn {
+  padding: 12px 24px;
+  background-color: var(--primary);
+  color: white;
+  border: none;
+  border-radius: 12px;
+  font-size: 16px;
+  font-weight: 500;
+  cursor: pointer;
+  margin-bottom: 40px;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 12px rgba(255, 102, 0, 0.2);
+}
+
+.filter-btn:hover {
+  background-color: #cc5200;
+  transform: translateY(-2px);
+}
+
+@keyframes pulse {
+  0%,
+  100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.2);
+  }
+}
+
+/* Responsive Tweaks */
+@media (max-width: 768px) {
+  .header > div:nth-child(2) {
+    font-size: 22px;
+  }
+  .nav-items ul {
+    gap: 10px;
+  }
+  .search-box {
+    flex-direction: column;
+    align-items: stretch;
+    padding: 16px;
+  }
+  .filter-btn {
+    width: 100%;
+  }
+  .restaurant-container {
+    padding: 0 16px 0px;
+  }
+}
