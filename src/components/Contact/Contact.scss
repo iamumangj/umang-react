@@ -1,0 +1,124 @@
+/* ===== Contact Page - Modern App Theme ===== */
+
+.contact-wrapper {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: linear-gradient(135deg, #ff7e5f, #feb47b);
+  padding: 40px 20px;
+}
+
+.contact-container {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 40px;
+  background: whitesmoke;
+  backdrop-filter: blur(18px);
+  border-radius: 20px;
+  padding: 25px;
+  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.15);
+  transition: 0.4s ease;
+}
+
+/* LEFT SIDE IMAGE */
+.contact-left {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  padding: 4px;
+}
+
+.contact-left img {
+  width: 100%;
+  max-width: 400px;
+  height: 100%;
+
+  border-radius: 15px;
+  object-fit: cover;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+}
+
+/* RIGHT SIDE FORM */
+.contact-right {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.contact-right h1 {
+  font-size: 2.5rem;
+  margin-bottom: 20px;
+  color: var(--primary);
+  font-weight: 600;
+}
+
+/* FORM */
+.contact-right form {
+  display: flex;
+  flex-direction: column;
+  padding: 10px;
+}
+
+/* INPUT + TEXTAREA */
+.contact-right form input,
+.contact-right form textarea {
+  padding: 14px 16px;
+  margin-bottom: 18px;
+  border-radius: 12px;
+  border: none;
+  font-size: 15px;
+  background: rgba(255, 255, 255, 0.85);
+  transition: 0.3s ease;
+  resize: none;
+}
+
+.contact-right form input:focus,
+.contact-right form textarea:focus {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(75, 108, 183, 0.3);
+  transform: scale(1.02);
+}
+
+/* BUTTON */
+.contact-right form button {
+  padding: 14px;
+  border-radius: 12px;
+  border: none;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  background: linear-gradient(135deg, #4b6cb7, #182848);
+  color: white;
+  transition: all 0.3s ease;
+}
+
+.contact-right form button:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 25px rgba(24, 40, 72, 0.35);
+}
+
+.contact-right form button:active {
+  transform: scale(0.98);
+}
+
+/* Responsive */
+@media (max-width: 900px) {
+  .contact-container {
+    flex-direction: column;
+    padding: 30px;
+  }
+
+  .contact-left img {
+    max-width: 300px;
+  }
+
+  .contact-right h1 {
+    font-size: 2rem;
+  }
+}
